@@ -24,7 +24,7 @@ const LandingPage: React.FC = () => {
             <Grid celled>
                 <Grid.Row>
                     <Grid.Column width='16'>
-                        <Header textAlign='center' as="h2">Enter an Artist's Name OR Song Name</Header>
+                        <Header textAlign='center' as="h2">Enter an Artist's Name OR a Song Name</Header>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
