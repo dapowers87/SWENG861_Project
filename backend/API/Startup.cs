@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Actions.Placeholder;
+using Application.Actions.Artist;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestSharp;
 
 namespace API
 {
@@ -35,7 +36,16 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "David Powers's Course Project Backend API", Version = "v1" });
             });
 
-            services.AddMediatR(typeof(Placeholder.Handler).Assembly);
+            services.AddCors(options => options.AddPolicy("AllowAll", policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            }));
+
+            services.AddMediatR(typeof(Search.Handler).Assembly);
+
+            services.AddTransient<IRestClient, RestClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,11 +58,9 @@ namespace API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "David Powers's Course Project Backend API"));
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,26 +1,15 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
-// import { history } from "../App"; 
+import { ArtistSearchResult } from "../types/ArtistSearchResult";
+import { SongSearchResult } from "../types/SongSearchResult";
 
-declare global {
-    interface Window { 
-        _env_: any; 
-    }
-}
-
-axios.defaults.baseURL = `${window._env_.REACT_APP_BACKEND_URL}/api`;
+axios.defaults.baseURL = `http://localhost:5000/api`;
 
 axios.interceptors.response.use(undefined, (error: any) => {
-    if(error.response.status === 400) {
-        return Promise.reject(error.response.data);
-    } else {
-        toast.error(`${error.message} for URL ${error.config.baseURL}${error.config.url}`);
-    }
-
-    if(error.response && error.response.data) {
-        return Promise.reject(error.response.data);
-    } else {
-        return Promise.reject(error.message + "\n" + error.stack);
+    if(error.response.status === 500) {
+        toast.error('Unexpected Backend Error');
+    } else if(error.response.status === 404) {
+        return Promise.reject(null);
     }
 });
 
@@ -67,6 +56,12 @@ const requests = {
             })
 };
 
-const Test = {}
+const Song = {
+    search: async (artistName: string, songName: string) => await requests.get(`/MusicSearch/GetSongInformation?artistName=${artistName}&songName=${songName}`) as SongSearchResult
+}
 
-export default { Test };
+const Artist = {
+    search: async (artistName: string) => await requests.get(`/MusicSearch/GetArtistInformation?artistName=${artistName}`) as ArtistSearchResult
+}
+
+export default { Song, Artist };
