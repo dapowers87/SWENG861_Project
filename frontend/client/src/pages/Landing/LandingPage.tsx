@@ -19,7 +19,6 @@ const LandingPage: React.FC = () => {
     const [searchType, setSearchType] = useState('Artist');
     const [header, setHeader] = useState(artistHeader);
     const [isSearching, setIsSearching] = useState(false);
-    const [test, setTest] = useState('');
 
     useEffect(() => {
         if(searchType === artistType) {
@@ -52,6 +51,7 @@ const LandingPage: React.FC = () => {
 
         if(response === undefined) {
             toast.error("No results found");
+            dispatch({ type: types.SETSONGSEARCHRESULTS, SongSearchResults: undefined});
         } else {
             if(searchType === artistType) {
                 dispatch({ type: types.SETARTISTSEARCHRESULTS, ArtistSearchResults: response});
@@ -59,8 +59,6 @@ const LandingPage: React.FC = () => {
                 dispatch({ type: types.SETSONGSEARCHRESULTS, SongSearchResults: response});
             }
         }
-
-        setTest(JSON.stringify(response));
     }
 
     const clearResults = () => {
@@ -93,7 +91,7 @@ const LandingPage: React.FC = () => {
                             {searchType === songType ?
                                 <Fragment>
                                     <Form.Group>
-                                        <Form.Input width='16' label='Song Name' value={MusicSearch.SongName ? MusicSearch.SongName : ''} name='SongName' onChange={handleSongNameChange} />
+                                        <Form.Input width='16' label='Song Track Name' value={MusicSearch.SongName ? MusicSearch.SongName : ''} name='SongName' onChange={handleSongNameChange} />
                                     </Form.Group>
                                 </Fragment>
                             : <div/>}
@@ -109,13 +107,15 @@ const LandingPage: React.FC = () => {
                         : <div/>
                     }
                 </Grid.Row>
-                <Grid.Row>
-                    {SongSearchResults ? 
-                        <SongResultsView />
-                        : ArtistSearchResults ? 
-                            <ArtistResultsView />
-                            : <div/>    
-                    }
+                <Grid.Row style={{marginTop: '20px'}}>
+                    <Grid.Column width='16' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        {SongSearchResults ? 
+                            <SongResultsView />
+                            : ArtistSearchResults ? 
+                                <ArtistResultsView />
+                                : <div/>    
+                        }
+                    </Grid.Column>
                 </Grid.Row>
             </Grid>
         </Fragment>
