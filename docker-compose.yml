@@ -1,12 +1,12 @@
 version: "3.4"
 
 services:
-  client:
+  project_client:
     build:
       context: frontend/client
     ports:
       - '3000:80'
-  backend:
+  project_backend:
     build:
       context: backend/
     ports:
