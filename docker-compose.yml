@@ -7,7 +7,7 @@ services:
     ports:
       - '3000:80'
     environment: 
-      - REACT_APP_BACKEND_URL=project-backend.davidpowers.dev
+      - REACT_APP_BACKEND_URL=https://project-backend.davidpowers.dev
   project_backend:
     build:
       context: backend/
