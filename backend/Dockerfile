@@ -3,9 +3,6 @@
 #     COPY . .
 #     CMD ["dotnet", "test"]
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-    WORKDIR /app
-
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS builder
     WORKDIR /src
     COPY API ./API
@@ -13,7 +10,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS builder
     COPY Application ./Application
     RUN dotnet publish API/API.csproj -c Release -o /app
 
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS final
     WORKDIR /app
     COPY --from=builder /app .
     ENTRYPOINT ["dotnet", "API.dll"]
