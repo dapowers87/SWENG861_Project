@@ -1,6 +1,7 @@
 FROM nginx AS base
-    EXPOSE 80
     EXPOSE 443
+    ENV TZ=America/Chicago
+    ENV DOLLAR $
     RUN apt-get update
     RUN apt-get install -y curl
     HEALTHCHECK --start-period=15s --interval=1m --timeout=30s CMD curl -k --fail 'https://localhost' || exit 1
@@ -20,4 +21,11 @@ FROM node:14.15.5-buster as build
 FROM base AS final
     COPY --from=build /app/build /usr/share/nginx/html
 
-    CMD ["nginx", "-g", "daemon off;"]
+    WORKDIR /usr/share/nginx/html
+    COPY env.sh /usr/share/nginx/html
+    COPY .env /usr/share/nginx/html
+    RUN chmod +x /usr/share/nginx/html/env.sh
+
+    COPY nginx/default.conf.template /etc/nginx/conf.d/default.conf.template
+
+    CMD ["/bin/bash", "-c", "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && ./env.sh && nginx -g \"daemon off;\""]

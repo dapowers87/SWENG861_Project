@@ -3,7 +3,13 @@ import { toast } from "react-toastify";
 import { ArtistSearchResult } from "../types/ArtistSearchResult";
 import { SongSearchResult } from "../types/SongSearchResult";
 
-axios.defaults.baseURL = `http://localhost:5000/api`;
+declare global {
+    interface Window { 
+        _env_: any; 
+    }
+}
+
+axios.defaults.baseURL = `${window._env_.REACT_APP_BACKEND_URL}/api`;
 
 axios.interceptors.response.use(undefined, (error: any) => {
     if(error.response.status === 500) {
