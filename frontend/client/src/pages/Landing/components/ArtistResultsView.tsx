@@ -41,7 +41,7 @@ const ArtistResultsView: React.FC = () => {
                                 <Card.Meta><strong>Number of Members: </strong>{ArtistSearchResults.numberOfMembers}</Card.Meta>
                                 <Card.Meta><strong>Genre: </strong>{ArtistSearchResults.genre}</Card.Meta>
                                 { ArtistSearchResults.bandWebsiteUrl ?
-                                    <Card.Meta><strong>Website: </strong><a href={ArtistSearchResults.bandWebsiteUrl} target="_blank">{ArtistSearchResults.bandWebsiteUrl}</a></Card.Meta>
+                                    <Card.Meta><strong>Website: </strong><a href={'//' + ArtistSearchResults.bandWebsiteUrl} target="_blank">{ArtistSearchResults.bandWebsiteUrl}</a></Card.Meta>
                                     : <div/>
                                 }
                                 { ArtistSearchResults.thumbnailUrl ?
