@@ -92,7 +92,6 @@ namespace Application.Actions.Artist
 
                     result.Albums.AddRange((albumObject.Select(album => 
                     {
-                        logger.LogInformation(album["strAlbum"].Value<string>());
                         return new ArtistAlbumSearchResult
                         {
                             AlbumName = album["strAlbum"] != null ? album["strAlbum"].Value<string>() : "",
