@@ -26,6 +26,4 @@ FROM base AS final
     COPY .env /usr/share/nginx/html
     RUN chmod +x /usr/share/nginx/html/env.sh
 
-    COPY nginx/default.conf.template /etc/nginx/conf.d/default.conf.template
-
-    CMD ["/bin/bash", "-c", "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && ./env.sh && nginx -g \"daemon off;\""]
+    CMD ["/bin/bash", "-c", "./env.sh && nginx -g \"daemon off;\""]
