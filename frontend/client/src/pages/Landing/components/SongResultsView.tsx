@@ -13,7 +13,7 @@ const SongResultsView: React.FC = () => {
 
     return (
         <Fragment>
-            <Card>
+            <Card style={{width: '45%'}}>
                 {SongSearchResults.thumbnailUrl ?
                     <Image src={SongSearchResults.thumbnailUrl} wrapped />
                     : <div/>
