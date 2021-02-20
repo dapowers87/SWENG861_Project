@@ -90,15 +90,20 @@ namespace Application.Actions.Artist
                     JObject rawObject = JObject.Parse(response.Content);
                     var albumObject = rawObject["album"].Value<JArray>();
 
-                    result.Albums.AddRange((albumObject.Select(album => new ArtistAlbumSearchResult
+                    result.Albums.AddRange((albumObject.Select(album => 
                     {
-                        AlbumName = album["strAlbum"].Value<string>(),
-                        AlbumType = album["strReleaseFormat"].Value<string>(),
-                        Description = album["strDescriptionEN"].Value<string>(),
-                        YearReleased = album["intYearReleased"].Value<string>(),
-                        ThumbnailUrl = album["strAlbumThumb"].Value<string>(),
-                        BrainzId = album["strMusicBrainzID"].Value<string>()
-                    })));
+                        logger.LogInformation(album["strAlbum"].Value<string>());
+                        return new ArtistAlbumSearchResult
+                        {
+                            AlbumName = album["strAlbum"] != null ? album["strAlbum"].Value<string>() : "",
+                            AlbumType = album["strReleaseFormat"] != null ? album["strReleaseFormat"].Value<string>() : "",
+                            Description = album["strDescriptionEN"] != null ? album["strDescriptionEN"].Value<string>() : "",
+                            YearReleased = album["intYearReleased"] != null ? album["intYearReleased"].Value<string>() : "",
+                            ThumbnailUrl = album["strAlbumThumb"] != null ? album["strAlbumThumb"].Value<string>() : "",
+                            BrainzId = album["strMusicBrainzID"] != null ? album["strMusicBrainzID"].Value<string>() : ""
+                        };
+                    }
+                    )));
                 }
                 else
                 {

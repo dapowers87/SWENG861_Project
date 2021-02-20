@@ -54,13 +54,14 @@ namespace Application.Actions.Song
                     {
                         return null;
                     }
-                    
+
                     songObject = songObject.track[0];
 
                     result = new SongSearchResult
                     {
                         ArtistName = songObject.strArtist,
                         SongName = songObject.strTrack,
+                        Genre = songObject.strGenre,
                         Description = songObject.strDescriptionEN,
                         MusicVideoUrl = songObject.strMusicVid,
                         Score = songObject.intScore,

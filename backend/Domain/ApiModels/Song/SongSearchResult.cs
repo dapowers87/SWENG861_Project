@@ -4,6 +4,7 @@ namespace Domain.ApiModels.Song
     {
         public string ArtistName { get; set; }
         public string SongName { get; set; }
+        public string Genre { get; set; }
         public string Description { get; set; }
         public string MusicVideoUrl { get; set; }
         public string Score { get; set; }

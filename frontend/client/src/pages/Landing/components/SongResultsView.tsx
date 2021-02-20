@@ -20,13 +20,14 @@ const SongResultsView: React.FC = () => {
                 }
                 <Card.Content>
                     <Card.Header>{SongSearchResults.artistName} - {SongSearchResults.songName} </Card.Header>
-                    <Card.Meta>Total Number of Plays: {SongSearchResults.totalPlays}</Card.Meta>
-                    <Card.Meta>Score: {SongSearchResults.score}/10</Card.Meta>
+                    <Card.Meta><strong>Genre: </strong>{SongSearchResults.genre ?? 'N/A'}</Card.Meta>
+                    <Card.Meta><strong>Total Number of Plays: </strong>{SongSearchResults.totalPlays ?? 'N/A'}</Card.Meta>
+                    <Card.Meta><strong>Score: </strong>{SongSearchResults.score ?? '-'}/10</Card.Meta>
                     {SongSearchResults.musicVideoUrl ? 
                         <Card.Description style={{marginBottom: '10px'}}><strong>Watch the Music Video:</strong> <a href={SongSearchResults.musicVideoUrl} target="_blank">Here</a> </Card.Description>
                         : <div/>
                     }
-                    <Card.Description>{SongSearchResults.description ? SongSearchResults.description : 'No Description Found'}</Card.Description>
+                    <Card.Description>{SongSearchResults.description ? SongSearchResults.description : <i>No Song Description Available</i>}</Card.Description>
                 </Card.Content>
             </Card>
         </Fragment>
