@@ -6,10 +6,11 @@ FROM nginx AS base
     HEALTHCHECK --start-period=15s --interval=1m --timeout=30s CMD curl -k --fail 'https://localhost' || exit 1
 
 # build environment
-FROM node:14-alpine as build
+FROM node:14.15.5-buster as build
     WORKDIR /app
     ENV PATH /app/node_modules/.bin:$PATH
     COPY /package.json /app/package.json
+    RUN npm install husky
     RUN npm install --silent
     RUN npm install react-scripts -g --silent
     COPY . /app
