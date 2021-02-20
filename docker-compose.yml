@@ -10,4 +10,4 @@ services:
     build:
       context: backend/
     ports:
-      - '5050:5050'
+      - '5051:5050'
