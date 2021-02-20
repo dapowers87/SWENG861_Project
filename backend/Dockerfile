@@ -5,9 +5,6 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
     WORKDIR /app
-    ENV ASPNETCORE_URLS https://+:443
-    ENV ASPNETCORE_HTTPS_PORT=443
-    EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS builder
     WORKDIR /src
