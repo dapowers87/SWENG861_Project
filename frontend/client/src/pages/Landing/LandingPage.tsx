@@ -10,8 +10,8 @@ const LandingPage: React.FC = () => {
 
     const artistType = 'Artist';
     const songType = 'ArtistSong';
-    const artistHeader = "Enter in an Artist's Name";
-    const songHeader = "Enter in an Artist's Name and One of Their Song's Track Name";
+    const artistHeader = "Enter an Artist's Name";
+    const songHeader = "Enter an Artist's Name and One of Their Song's Track Name";
 
     const { state, dispatch } = useContext(AppContext);
     const { MusicSearch, ArtistSearchResults, SongSearchResults } = state as IInitialState;
