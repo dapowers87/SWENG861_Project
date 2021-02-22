@@ -4,7 +4,7 @@ FROM nginx AS base
     ENV DOLLAR $
     RUN apt-get update
     RUN apt-get install -y curl
-    HEALTHCHECK --start-period=15s --interval=1m --timeout=30s CMD curl -k --fail 'https://localhost' || exit 1
+    HEALTHCHECK --start-period=15s --interval=1m --timeout=30s CMD curl -k --fail 'http://localhost' || exit 1
 
 # build environment
 FROM node:14.15.5-buster as build
