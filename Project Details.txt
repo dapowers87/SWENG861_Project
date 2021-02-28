@@ -1,0 +1,22 @@
+1. Language used
+ 	- React Typescript for the frontend
+ 	- ASP.NET C# for the backend
+2. Framework or important libraries
+	- Frontend:
+		- Axios: Used for making REST calls
+		- Semantic UI: Used for the look and feel of the website
+	- Backend:
+		- MediatR: Used to break apart logic
+3. Development Tools
+	- VS Code: IDE
+	- Docker: Containerization
+	- Git: Code Management
+4. # of REST APIs called
+	- 5
+		- 3 to TheAudioDB from the backend
+			1: Get Artist Information
+			2: Get Album Information
+			3: Get Song Information
+		- 2 from the Frontend to the Backend
+			1: Artist Search
+			2: Song Search
