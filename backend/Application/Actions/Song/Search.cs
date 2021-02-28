@@ -14,6 +14,8 @@ using System.Collections;
 using Newtonsoft.Json.Linq;
 using Domain.ApiModels.Song;
 
+//This is the logic behind a search for song information
+
 namespace Application.Actions.Song
 {
     public class Search
@@ -37,6 +39,7 @@ namespace Application.Actions.Song
 
             public async Task<SongSearchResult> Handle(Query request, CancellationToken cancellationToken)
             {
+                //This retreives the song information from the AudioDB API
                 restClient.BaseUrl = new Uri($"http://theaudiodb.com/api/v1/json/523532/searchtrack.php?s={request.ArtistName}&t={request.SongName}");
 
                 logger.LogInformation($"Connecting to {restClient.BaseUrl}");

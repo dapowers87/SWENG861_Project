@@ -9,6 +9,9 @@ using Application.Actions.Artist;
 using MediatR;
 using Domain.ApiModels.Song;
 
+//This is the controller that is accessed by the frontend when searching for either an 
+//artist or a song
+
 namespace API.Controllers
 {
     [ApiController]

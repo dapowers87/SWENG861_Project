@@ -1,3 +1,5 @@
+//This is the model that is returned to the frontend when searching for a song
+
 namespace Domain.ApiModels.Song
 {
     public class SongSearchResult

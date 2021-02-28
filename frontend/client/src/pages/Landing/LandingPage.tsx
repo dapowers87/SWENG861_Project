@@ -6,6 +6,9 @@ import { AppContext, IInitialState, types } from '../../store';
 import ArtistResultsView from './components/ArtistResultsView';
 import SongResultsView from './components/SongResultsView';
 
+// This is the base component that is shown on the root of the website
+// All other components are children of this component.
+
 const LandingPage: React.FC = () => {
 
     const artistType = 'Artist';

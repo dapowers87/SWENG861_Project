@@ -4,6 +4,8 @@ import { AppContext, IInitialState } from '../../../store';
 import { ArtistAlbumSearchResult } from '../../../types/ArtistSearchResult';
 import AlbumView from './AlbumView';
 
+//This is the component that shows the Artist information as well as a list of albums
+
 const ArtistResultsView: React.FC = () => {
 
     const { state } = useContext(AppContext);

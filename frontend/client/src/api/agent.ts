@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import { ArtistSearchResult } from "../types/ArtistSearchResult";
 import { SongSearchResult } from "../types/SongSearchResult";
 
+//This object is what is used to communicate with the backend
+
 declare global {
     interface Window { 
         _env_: any; 

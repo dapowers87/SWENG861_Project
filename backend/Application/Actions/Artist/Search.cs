@@ -14,6 +14,8 @@ using Domain.ApiModels.Artist;
 using System.Collections;
 using Newtonsoft.Json.Linq;
 
+//This is the logic behind a search for artist information
+
 namespace Application.Actions.Artist
 {
     public class Search
@@ -36,6 +38,7 @@ namespace Application.Actions.Artist
 
             public async Task<ArtistSearchResult> Handle(Query request, CancellationToken cancellationToken)
             {
+                //Get the artist information from the AudioDB API
                 restClient.BaseUrl = new Uri($"http://theaudiodb.com/api/v1/json/523532/search.php?s={request.ArtistName}");
 
                 logger.LogInformation($"Connecting to {restClient.BaseUrl}");
@@ -77,6 +80,7 @@ namespace Application.Actions.Artist
                     return null;
                 }
 
+                //Get the album information for an artist from the AudioDB API
                 restClient.BaseUrl = new Uri($"http://theaudiodb.com/api/v1/json/523532/searchalbum.php?s={request.ArtistName}");
 
                 logger.LogInformation($"Connecting to {restClient.BaseUrl}");

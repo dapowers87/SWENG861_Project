@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import { Card, Image } from 'semantic-ui-react';
 import { ArtistAlbumSearchResult } from '../../../types/ArtistSearchResult';
 
+//This is the component that is seen when expanding on an artist's album accordion list
+
 const AlbumView: React.FC<{album: ArtistAlbumSearchResult}> = ({ album }) => {
     
     return (

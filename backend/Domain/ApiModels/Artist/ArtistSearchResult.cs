@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+//This is the model that is returned to the frontend when searching for an artist
+
 namespace Domain.ApiModels.Artist
 {
     public class ArtistSearchResult

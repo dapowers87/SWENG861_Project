@@ -2,6 +2,8 @@ import React, { Fragment, useContext } from 'react'
 import { Card, Image } from 'semantic-ui-react';
 import { AppContext, IInitialState } from '../../../store';
 
+//This is the component that shows a song's information
+
 const SongResultsView: React.FC = () => {
 
     const { state } = useContext(AppContext);
