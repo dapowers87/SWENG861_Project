@@ -71,6 +71,7 @@ const LandingPage: React.FC = () => {
     
     return (
         <Fragment>
+            <Header as='h1' textAlign='center' style={{marginTop: '15px', marginBottom: '15px'}}>David Powers's SWENG861 Project</Header>
             <Grid celled>
                 <Grid.Row>
                     <Grid.Column width='16'>
