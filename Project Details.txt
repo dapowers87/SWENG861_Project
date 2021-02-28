@@ -5,6 +5,7 @@
 	- Frontend:
 		- Axios: Used for making REST calls
 		- Semantic UI: Used for the look and feel of the website
+		- Toastify: Used to show a pop-up when no results are found
 	- Backend:
 		- MediatR: Used to break apart logic
 3. Development Tools
