@@ -10,6 +10,8 @@
 		- MediatR: Used to break apart logic
 3. Development Tools
 	- VS Code: IDE
+	- NPM: React compiler
+	- Dotnet: C# compiler
 	- Docker: Containerization
 	- Git: Code Management
 4. # of REST APIs called
